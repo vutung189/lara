@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Passport;
+use App\Category;
+use App\Product;
 use Illuminate\Http\Request;
 
-class PassportController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,19 @@ class PassportController extends Controller
      */
     public function index()
     {
+        $product = Product::find([1]);
+        return view('products', [
+            'product'=>$product,
+        ]);
         //
+//        $product = new Product();
+//
+//        $product->name = 'tungvt';
+//        $product->price = 50;
+//
+//        $product->save();
+//        $category = Category::find([1,2]);
+//        $product->categories()->attach($category);
     }
 
     /**
@@ -24,7 +37,8 @@ class PassportController extends Controller
      */
     public function create()
     {
-        return view('create');
+        //
+
     }
 
     /**
@@ -35,15 +49,7 @@ class PassportController extends Controller
      */
     public function store(Request $request)
     {
-        $passport = new Passport();
-
-        if($request->hasFile('filename')){
-            $file= $request->file('filename');
-            $name= time().$file->getClientOriginalName();
-            $file->move(public_path().'/images',$name);
-        }
-
-
+        //
     }
 
     /**
